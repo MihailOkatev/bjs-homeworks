@@ -13,16 +13,12 @@ function calculateQuadraticEquation(){
 function getResult(a,b,c){
     let x = [];
     let d = Math.pow(b, 2) - 4*a*c;
-    console.log(` Дискриминант = ${d}`);
     if (d > 0) {
         x[0] = (-b + Math.sqrt(d)) / (2*a);
         x[1] = (-b -Math.sqrt(d)) / (2*a);
-        console.log(`Уравнение имеет 2 корня: ${x}`); 
     } else if (d = 0) {
         x[0] = -b / (2*a);
-        console.log(`уравнение имеет 1 корень: ${x}`);
     } else {
-        console.log ("Корней нет");
         x = [];
     }
     return x;
@@ -36,10 +32,8 @@ function calculateAverageRating(){
 
 function getAverageMark(marks) {
     let marksSum = 0;
-    console.log (marks);
     if (marks.length > 5) {
         marks.splice(5, marks.length + 1); // намеренно указываю число больше длины массива, чтобы обрезать все элементы после 5-го
-        console.log(marks);
         for (let i = 0; i <= marks.length - 1; i++) {
             marksSum = marksSum + marks[i];
         }
@@ -61,7 +55,11 @@ function calculateDrinkTask(){
 }
 
 function askDrink(name,dateOfBirthday){
-    // код для задачи №3 писать здесь
-    //console.log(result)
-    //return result;
+    let currentYear = new Date().getFullYear();
+    if ( currentYear - dateOfBirthday.getFullYear() >= 18) {
+        result = `Не желаете ли олд-фэшн, ${name}?`; 
+    } else {
+        result = `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`
+    }
+    return result;
 }
