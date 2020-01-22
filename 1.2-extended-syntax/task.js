@@ -11,8 +11,21 @@ function calculateQuadraticEquation(){
 }
 
 function getResult(a,b,c){
-    // код для задачи №1 писать здесь
-    //return x;
+    let x = [];
+    let d = Math.pow(b, 2) - 4*a*c;
+    console.log(` Дискриминант = ${d}`);
+    if (d > 0) {
+        x[0] = (-b + Math.sqrt(d)) / (2*a);
+        x[1] = (-b -Math.sqrt(d)) / (2*a);
+        console.log(`Уравнение имеет 2 корня: ${x}`); 
+    } else if (d = 0) {
+        x[0] = -b / (2*a);
+        console.log(`уравнение имеет 1 корень: ${x}`);
+    } else {
+        console.log ("Корней нет");
+        x = [];
+    }
+    return x;
 }
 
 function calculateAverageRating(){
