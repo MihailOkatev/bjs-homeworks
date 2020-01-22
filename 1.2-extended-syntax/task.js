@@ -16,11 +16,9 @@ function getResult(a,b,c){
     if (d > 0) {
         x[0] = (-b + Math.sqrt(d)) / (2*a);
         x[1] = (-b -Math.sqrt(d)) / (2*a);
-    } else if (d = 0) {
+    } else if (d === 0) {
         x[0] = -b / (2*a);
-    } else {
-        x = [];
-    }
+    } 
     return x;
 }
 
@@ -30,22 +28,24 @@ function calculateAverageRating(){
     window.averageMark.textContent = averageMark;
 }
 
-function getAverageMark(marks) {
+function marksSumCounting(marks) {
     let marksSum = 0;
+    for (let i = 0; i <= marks.length - 1; i++) {
+        marksSum = marksSum + marks[i];
+    }
+      
+     return marksSum;
+}
+
+function getAverageMark(marks) {
     if (marks.length > 5) {
-        marks.splice(5, marks.length + 1); // намеренно указываю число больше длины массива, чтобы обрезать все элементы после 5-го
-        for (let i = 0; i <= marks.length - 1; i++) {
-            marksSum = marksSum + marks[i];
-        }
+        marks.splice(5); 
+        return marksSumCounting(marks) / marks.length;
      
-    }  else {
-        for (let i = 0; i <= marks.length - 1; i++) {
-            marksSum = marksSum + marks[i];
-        }
+    }  else {       
+        return marksSumCounting(marks) / marks.length;
         
     }
-    let averageMarkValue = marksSum / marks.length;
-     return averageMarkValue;
 }
 function calculateDrinkTask(){
     let name = window.personName.value;
@@ -55,8 +55,7 @@ function calculateDrinkTask(){
 }
 
 function askDrink(name,dateOfBirthday){
-    let currentYear = new Date().getFullYear();
-    if ( currentYear - dateOfBirthday.getFullYear() >= 18) {
+    if ( new Date().getFullYear() - dateOfBirthday.getFullYear() >= 18) {
         result = `Не желаете ли олд-фэшн, ${name}?`; 
     } else {
         result = `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`
