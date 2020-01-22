@@ -28,25 +28,18 @@ function calculateAverageRating(){
     window.averageMark.textContent = averageMark;
 }
 
-function marksSumCounting(marks) {
+
+function getAverageMark(marks) {
     let marksSum = 0;
+    if (marks.length > 5) {
+        marks.splice(5); 
+    }
     for (let i = 0; i <= marks.length - 1; i++) {
         marksSum = marksSum + marks[i];
     }
-      
-     return marksSum;
-}
-
-function getAverageMark(marks) {
-    if (marks.length > 5) {
-        marks.splice(5); 
-        return marksSumCounting(marks) / marks.length;
-     
-    }  else {       
-        return marksSumCounting(marks) / marks.length;
-        
+        return marksSum/ marks.length;
     }
-}
+
 function calculateDrinkTask(){
     let name = window.personName.value;
     let dateOfBirthday = new Date(window.dateOfBirthday.value);
