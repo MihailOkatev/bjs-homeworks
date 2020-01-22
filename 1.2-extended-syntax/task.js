@@ -34,11 +34,25 @@ function calculateAverageRating(){
     window.averageMark.textContent = averageMark;
 }
 
-function getAverageMark(marks){
-    // код для задачи №2 писать здесь
-    //return averageMark;
+function getAverageMark(marks) {
+    let marksSum = 0;
+    console.log (marks);
+    if (marks.length > 5) {
+        marks.splice(5, marks.length + 1); // намеренно указываю число больше длины массива, чтобы обрезать все элементы после 5-го
+        console.log(marks);
+        for (let i = 0; i <= marks.length - 1; i++) {
+            marksSum = marksSum + marks[i];
+        }
+     
+    }  else {
+        for (let i = 0; i <= marks.length - 1; i++) {
+            marksSum = marksSum + marks[i];
+        }
+        
+    }
+    let averageMarkValue = marksSum / marks.length;
+     return averageMarkValue;
 }
-
 function calculateDrinkTask(){
     let name = window.personName.value;
     let dateOfBirthday = new Date(window.dateOfBirthday.value);
