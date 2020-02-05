@@ -7,7 +7,11 @@ describe('Домашнее задание к занятию 2.1 «Обертки
 
   it('Задача №1 должна верно считать кредит, кейс #2', () => {
     const nextYearDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+<<<<<<< HEAD
     expect(calculateTotalMortgage(10, 1000, 50000, nextYearDate)).toEqual(51694.54);
+=======
+    expect(calculateTotalMortgage(10, 1000, 50000, nextYearDate)).toEqual(53749.53);
+>>>>>>> 9a769691c14c248b7b0b2f9d7cbcee84b39628cc
   });
 
   it('Задача №1 должна верно считать кредит, кейс #3', () => {
