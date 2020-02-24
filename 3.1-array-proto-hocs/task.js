@@ -48,12 +48,13 @@ function memorize (fn, limit) {
             // console.log(`Результат из памяти`);
             return searchingInMemory.result;
 
-        } else {
+        }
             if(results.length <= limit) {
                 results.splice(0,1);
-            }
-            results.push({ args: Array.from(arguments), result: fn(...arguments) });
+            
         }
+        results.push({ args: Array.from(arguments), result: fn(...arguments) });
+            return results[results.length - 1].result;
     }
 
     
@@ -62,7 +63,7 @@ let argsArray = [ [1,2,3], [1,2], [1,2,3], [1,2], [9,5,2,4] ];
 
 function testCase(testFunction,label) {
     console.time(label);
-    for(let i = 0; i< 1000000; i++) {
+    for(let i = 0; i < 1000; i++) {
         argsArray.forEach(elem =>testFunction(...elem));
         
     }
