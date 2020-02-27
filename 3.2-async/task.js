@@ -34,6 +34,7 @@ getCurrentFormattedTime() {
       this.alarmCollection.forEach(alarm => console.log(`Звонок с id ${alarm.id} назначен на ${alarm.time}`));
   }
   clearAlarms() {
+     this.stop();
       this.alarmCollection = [];
   }
   
@@ -54,20 +55,21 @@ getCurrentFormattedTime() {
 
 stop() {
     this.timerId = null;
-    this.clearAlarms();
   }
 }
 function testCase() {
   let clock = new AlarmClock;
-  clock.addClock("12:00",console.log("Дзынь-дзынь-дзынь"), "Тестовый будильник");
-  clock.addClock("12:01", console.log("Трынь"),"Тестовый будильник 2");
-  clock.addClock("12:02", console.log("Бом-бом"));
-  clock.addClock("12:03", console.log("Трынь"),"Тестовый будильник 3");
+  clock.addClock("12:00",console.log, "Тестовый будильник");
+  clock.addClock("12:10", console.log,"Тестовый будильник 2");
+  clock.addClock("12:11", console.log);
+  clock.addClock("12:12", console.log,"Тестовый будильник 3");
   clock.printAlarms();
   clock.removeClock("Тестовый будильник 2");
   clock.printAlarms();
+  clock.clearAlarms();
+  clock.addClock("12:15", console.log,"Тестовый будильник 4");
   clock.start();
-  clock.stop();
+  
   
 
 
