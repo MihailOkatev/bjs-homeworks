@@ -4,6 +4,7 @@ function sleep(milliseconds)
   while (new Date().getTime() <= e) {}
 }
 function sum(...arguments) {
+    sleep(20);
     let argsArr = Array.from(arguments);
     let totalSum = 0;
     for (let i = 0; i < argsArr.length; i++) {
